@@ -1,10 +1,9 @@
 package com.andemar.ddd.animewatch.infrastructure.output.persistence.repository;
 
-import com.andemar.ddd.animewatch.infrastructure.output.persistence.entity.GenderEntity;
+import com.andemar.ddd.animewatch.infrastructure.output.persistence.entity.GenreEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GenderRepository extends JpaRepository<GenderEntity, Long> {
-
+public interface GenreRepository extends JpaRepository<GenreEntity, Long> {
 }

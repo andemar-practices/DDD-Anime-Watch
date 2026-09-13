@@ -2,15 +2,13 @@ package com.andemar.ddd.animewatch.infrastructure.input.adapter.rest.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import java.util.List;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 @Data
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
-public class RequestAnime {
-    @NotBlank(message = "Title must not be blank")
-    @Size(max = 255, message = "Title must not exceed 255 characters")
-    String title;
-    List<Long> genreIds;
+public class RequestGenre {
+    @NotBlank(message = "Name must not be blank")
+    @Size(max = 100, message = "Name must not exceed 100 characters")
+    String name;
 }

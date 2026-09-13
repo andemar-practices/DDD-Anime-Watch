@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 @Data
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
-public class ResponseGender {
+public class ResponseGenre {
+  private Long id;
   private String name;
 }

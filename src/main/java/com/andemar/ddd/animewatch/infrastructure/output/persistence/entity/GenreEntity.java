@@ -10,9 +10,9 @@ import lombok.experimental.FieldDefaults;
 
 @Data
 @Entity
-@Table(name = "genders")
+@Table(name = "genres")
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
-public class GenderEntity {
+public class GenreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

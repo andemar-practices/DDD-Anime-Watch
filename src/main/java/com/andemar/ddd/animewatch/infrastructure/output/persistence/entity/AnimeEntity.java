@@ -20,12 +20,12 @@ public class AnimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String tittle;
+    String title;
     @ManyToMany
     @JoinTable(
-        name = "anime_genders",
+        name = "anime_genres",
         joinColumns = @JoinColumn(name = "anime_id"),
-        inverseJoinColumns = @JoinColumn(name = "gender_id")
+        inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    List<GenderEntity> genders;
+    List<GenreEntity> genres;
 }

@@ -7,10 +7,9 @@ import com.andemar.ddd.animewatch.domain.model.Anime;
 import com.andemar.ddd.animewatch.infrastructure.input.adapter.rest.mapper.AnimeRestMapper;
 import com.andemar.ddd.animewatch.infrastructure.input.adapter.rest.model.RequestAnime;
 import com.andemar.ddd.animewatch.infrastructure.input.adapter.rest.model.ResponseAnime;
-import com.andemar.ddd.animewatch.infrastructure.utils.Utils;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,23 +32,28 @@ public class AnimeController {
 
   @GetMapping
   public ResponseEntity<List<ResponseAnime>> getAllAnime() {
-    List<Anime> allAnime = animeUseCase.getAllAnime();
-    List<ResponseAnime> responseAnimeList = animeRestMapper.toResponseAnimeList(allAnime);
+    List<ResponseAnime> responseAnimeList = animeRestMapper.toResponseAnimeList(animeUseCase.getAllAnime());
     return mapResponse(responseAnimeList, HttpStatus.OK);
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<ResponseAnime> getAnimeById(@PathVariable Long id) {
+    ResponseAnime responseAnime = animeRestMapper.toResponseAnime(animeUseCase.getAnimeById(id));
+    return mapResponse(responseAnime, HttpStatus.OK);
+  }
+
   @PostMapping
-  public ResponseEntity<ResponseAnime> createAnime(@RequestBody RequestAnime requestAnime) {
+  public ResponseEntity<ResponseAnime> createAnime(@Valid @RequestBody RequestAnime requestAnime) {
     Anime anime = animeRestMapper.toDomain(requestAnime);
     ResponseAnime responseAnime = animeRestMapper.toResponseAnime(animeUseCase.createAnime(anime));
     return mapResponse(responseAnime, HttpStatus.CREATED);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<ResponseAnime> updateAnime(@PathVariable Long id, @RequestBody RequestAnime requestAnime) {
+  public ResponseEntity<ResponseAnime> updateAnime(@PathVariable Long id, @Valid @RequestBody RequestAnime requestAnime) {
     Anime anime = animeRestMapper.toDomain(requestAnime);
     ResponseAnime responseAnime = animeRestMapper.toResponseAnime(animeUseCase.updateAnime(id, anime));
-    return mapResponse(responseAnime, HttpStatus.NO_CONTENT);
+    return mapResponse(responseAnime, HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")

@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface AnimeUseCase {
   List<Anime> getAllAnime();
+  Anime getAnimeById(Long id);
   Anime createAnime(Anime anime);
   Anime updateAnime(Long id, Anime anime);
   void deleteAnime(Long id);
