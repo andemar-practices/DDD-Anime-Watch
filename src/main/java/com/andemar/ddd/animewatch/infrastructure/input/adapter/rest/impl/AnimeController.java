@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/anime")
+@RequestMapping("/api/v1/anime")
 @RequiredArgsConstructor
 public class AnimeController {
 

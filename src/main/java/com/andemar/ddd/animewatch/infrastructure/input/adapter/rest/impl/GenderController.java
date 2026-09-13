@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/genders")
+@RequestMapping("/api/v1/genders")
 @RequiredArgsConstructor
 public class GenderController {
 
